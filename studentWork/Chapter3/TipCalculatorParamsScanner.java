@@ -26,12 +26,11 @@ public class TipCalculatorParamsScanner {
         System.out.println("Enter Darwin's Tip %: ");
         double darwinTip = console.nextDouble();
 
+        console.close();//write at end of code.
+
         // Calculate Brian's Money in Wallet
-        double brianMealTotal = 50;
-        double brianMoneyRemaining = 0;
-        calculateTip(brianMeal);
-        brianMoneyRemaining = brianMoney - brianMealTotal;
-        System.out.println("Brian has $" + brianMoneyRemaining + " in his wallet");
+        brianMoney -= calculateTip(brianMeal);
+        System.out.println("Brian has $" + brianMoney + " in his wallet");
 
         // Calculate Darwin's Money in Wallet
         darwinMoney -= calculateTip(darwinMeal, darwinTip);
@@ -40,19 +39,15 @@ public class TipCalculatorParamsScanner {
 
     // Overloaded method definition for `calculateTip`
     public static double calculateTip(double mealTotal) {
-        double brianMealTotal = mealTotal + (mealTotal * 0.10);
-        System.out.println("Brian Meal Total: " + brianMealTotal);
-        return brianMealTotal;
-
+        mealTotal = mealTotal + (mealTotal * 0.10);
+        return mealTotal;
     }
 
     public static double calculateTip(double mealTotal, double tipPercentage) {
         System.out.println("Your total without tip is $" + mealTotal);
         System.out.println("You chose to tip " + tipPercentage + "%");
-
         mealTotal *= 1 + (tipPercentage / 100);
         System.out.println("Your meal total is $" + mealTotal);
-
         return mealTotal;
     }
 }
