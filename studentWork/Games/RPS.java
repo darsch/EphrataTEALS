@@ -32,3 +32,13 @@ public class RPS {
         return x;
     }
 }
+
+
+/*The result is a tie!
+Rock crushes Scissors: Computer wins
+Rock crushes Scissors: You win!
+Paper covers Rock: Computer wins
+Paper covers Rock: You win!
+Scissors cut Paper: Computer wins
+Scissors cut Paper: You win! */
+
