@@ -41,8 +41,43 @@ public class MoreDiceLab {
 
         // Uncomment the following lines once you finish Part 2
         //
-        playerDie = rollDie(random);
-        computerDie = rollDie(random);
+        int dicePlayerFirst = 0;
+        int dicePlayerSecond = 0;
+        int diceComputerFirst = 0;
+        int diceComputerSecond = 0;
+
+
+        // Three roles for player
+        for(int i = 1; i <= 3; i++){
+            System.out.print("Number " + i + ": ");
+            playerDie = rollDie(random);
+            if(playerDie > dicePlayerFirst){
+                dicePlayerSecond = dicePlayerFirst;
+                dicePlayerFirst = playerDie;
+            } else if ((dicePlayerFirst > playerDie) && (dicePlayerSecond < playerDie)){ 
+                dicePlayerSecond = playerDie;
+            } else 
+            {System.out.println("Done!");}
+
+            System.out.println(dicePlayerFirst);
+            System.out.println(dicePlayerSecond);
+        }
+
+        // Two roles for computer
+        for(int i = 1; i <= 2; i++){
+            System.out.print("Number " + i + ": ");
+            computerDie = rollDie(random);
+            if(computerDie > diceComputerFirst){
+                diceComputerSecond = diceComputerFirst;
+                diceComputerFirst = computerDie;
+            } else 
+            {System.out.println("Done!");}
+
+            System.out.println(diceComputerFirst);
+            System.out.println(diceComputerSecond);
+        }
+        //playerDie = rollDie(random);
+        //computerDie = rollDie(random);
 
         System.out.println("The player rolled:   " + playerDie);
         System.out.println("The computer rolled: " + computerDie);
@@ -51,18 +86,31 @@ public class MoreDiceLab {
         // Add code here to determine the winner according to Part 3
         //
         // ...
-        String winner = "";
-        if (computerArmies > 0 && computerDie >= playerDie && playerArmies > 0){
-            winner = "Computer Wins!";
+        String diceFirstWinner = "";
+        if (computerArmies > 0 && diceComputerFirst >= dicePlayerFirst && playerArmies > 0){
+            diceFirstWinner = "Computer Wins!";
             playerArmies = playerArmies - 1;
-        } else if (playerArmies > 0 && playerDie > computerDie && computerArmies > 0){
-            winner = "Player Wins";
+        } else if (playerArmies > 0 && dicePlayerFirst > diceComputerFirst && computerArmies > 0){
+            diceFirstWinner = "Player Wins";
             computerArmies = computerArmies -1;
         } else {
             System.out.println("Game Over! To end enter Quit");
         }
 
-        System.out.println("The winner is:   " + winner);
+        System.out.println("The first dice winner is:   " + diceFirstWinner);
+
+        String diceSecondWinner = "";
+        if (computerArmies > 0 && diceComputerSecond >= dicePlayerSecond && playerArmies > 0){
+            diceSecondWinner = "Computer Wins!";
+            playerArmies = playerArmies - 1;
+        } else if (playerArmies > 0 && dicePlayerSecond > diceComputerSecond && computerArmies > 0){
+            diceSecondWinner = "Player Wins";
+            computerArmies = computerArmies -1;
+        } else {
+            System.out.println("Game Over! To end enter Quit");
+        }
+
+        System.out.println("The second dice winner is:   " + diceSecondWinner);
 
         printArmies(playerArmies, computerArmies);
 
