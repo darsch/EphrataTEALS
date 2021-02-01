@@ -12,21 +12,18 @@ public class MoreDiceLab {
         int computerArmies = 0;
 
         Random random = new Random();
-        //int armynum = 5 + random.nextInt(10 - 5 + 1);
-        //System.out.println("test " + armynum);
 
         // Uncomment the following lines once you finish Part 1
-        // Also comment out the existing single parameter calls to initializeArmies(random)
-        System.out.println("Enter minium number of Armies and Press ENTER. To end enter Quit");
-        int minArmies = console.nextInt();
-        System.out.println("Enter maxium number of Armies and Press ENTER. To end enter Quit");
-        int maxArmies = console.nextInt();
-        playerArmies = initializeArmies(random, minArmies, maxArmies);
-        computerArmies = initializeArmies(random, minArmies, maxArmies);
+        // 
+        //System.out.println("Enter minium number of Armies and Press ENTER.");
+        // Write Code to get value from console
+        //System.out.println("Enter maxium number of Armies and Press ENTER.");
+        // Write Code to get value from console
 
-
-        //playerArmies = initializeArmies(random);
-        //computerArmies = initializeArmies(random);
+        // Also modify single parameter calls to initializeArmies with multiple parameters
+        // See Part 1: add more Armies 1 where you need to modify the initializeArmies method
+        playerArmies = initializeArmies(random);
+        computerArmies = initializeArmies(random);
 
         printArmies(playerArmies, computerArmies);
 
@@ -39,78 +36,31 @@ public class MoreDiceLab {
         int playerDie = 0;
         int computerDie = 0;
 
-        // Uncomment the following lines once you finish Part 2
-        //
-        int dicePlayerFirst = 0;
-        int dicePlayerSecond = 0;
-        int diceComputerFirst = 0;
-        int diceComputerSecond = 0;
-
-
+        // Modify to work with multiple dice being rolled
         // Three roles for player
-        for(int i = 1; i <= 3; i++){
-            System.out.print("Number " + i + ": ");
-            playerDie = rollDie(random);
-            if(playerDie > dicePlayerFirst){
-                dicePlayerSecond = dicePlayerFirst;
-                dicePlayerFirst = playerDie;
-            } else if ((dicePlayerFirst > playerDie) && (dicePlayerSecond < playerDie)){ 
-                dicePlayerSecond = playerDie;
-            } else 
-            {System.out.println("Done!");}
-
-            System.out.println(dicePlayerFirst);
-            System.out.println(dicePlayerSecond);
-        }
-
         // Two roles for computer
-        for(int i = 1; i <= 2; i++){
-            System.out.print("Number " + i + ": ");
-            computerDie = rollDie(random);
-            if(computerDie > diceComputerFirst){
-                diceComputerSecond = diceComputerFirst;
-                diceComputerFirst = computerDie;
-            } else 
-            {System.out.println("Done!");}
-
-            System.out.println(diceComputerFirst);
-            System.out.println(diceComputerSecond);
-        }
-        //playerDie = rollDie(random);
-        //computerDie = rollDie(random);
+        playerDie = rollDie(random);
+        computerDie = rollDie(random);
 
         System.out.println("The player rolled:   " + playerDie);
         System.out.println("The computer rolled: " + computerDie);
         System.out.println();
 
         // Add code here to determine the winner according to Part 3
-        //
+        // Part 3: determine winner
         // ...
-        String diceFirstWinner = "";
-        if (computerArmies > 0 && diceComputerFirst >= dicePlayerFirst && playerArmies > 0){
-            diceFirstWinner = "Computer Wins!";
+        String winner = "";
+        if (computerArmies > 0 && computerDie >= playerDie && playerArmies > 0){
+            winner = "Computer Wins!";
             playerArmies = playerArmies - 1;
-        } else if (playerArmies > 0 && dicePlayerFirst > diceComputerFirst && computerArmies > 0){
-            diceFirstWinner = "Player Wins";
+        } else if (playerArmies > 0 && playerDie > computerDie && computerArmies > 0){
+            winner = "Player Wins";
             computerArmies = computerArmies -1;
         } else {
             System.out.println("Game Over! To end enter Quit");
         }
 
-        System.out.println("The first dice winner is:   " + diceFirstWinner);
-
-        String diceSecondWinner = "";
-        if (computerArmies > 0 && diceComputerSecond >= dicePlayerSecond && playerArmies > 0){
-            diceSecondWinner = "Computer Wins!";
-            playerArmies = playerArmies - 1;
-        } else if (playerArmies > 0 && dicePlayerSecond > diceComputerSecond && computerArmies > 0){
-            diceSecondWinner = "Player Wins";
-            computerArmies = computerArmies -1;
-        } else {
-            System.out.println("Game Over! To end enter Quit");
-        }
-
-        System.out.println("The second dice winner is:   " + diceSecondWinner);
+        System.out.println("The winner is:   " + winner);
 
         printArmies(playerArmies, computerArmies);
 
@@ -140,10 +90,10 @@ public class MoreDiceLab {
     }
 
     // Part 1: add more Armies 1
-    public static int initializeArmies(Random random, int min, int max) {
+    public static int initializeArmies(Random random) {
         // Generate random number between 5 to 10 
-        //int min = 5;
-        //int max = 10;
+        int min = 5;
+        int max = 10;
         //int armies = (int)(Math.random() * (max - min + 1)) + min;
         int armynum = min + random.nextInt(max - min + 1);
         return armynum;
