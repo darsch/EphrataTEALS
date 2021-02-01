@@ -103,7 +103,7 @@ public class DiceLab {
     public static int rollDie (Random random) {
         // Generate random number between 1 to 6 
         //int dicenum = (int)(Math.random() * (max - min + 1)) + min;
-        int dicenum = random.nextInt(7) + 1;
+        int dicenum = random.nextInt(2) + 5;
         return dicenum;
 
     }
