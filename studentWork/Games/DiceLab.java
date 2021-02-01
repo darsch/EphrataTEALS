@@ -17,8 +17,8 @@ public class DiceLab {
 
         // Uncomment the following lines once you finish Part 1
         // 
-        playerArmies = initializeArmies(random);
-        computerArmies = initializeArmies(random);
+        playerArmies = initializeArmies2(random);
+        computerArmies = initializeArmies2(random);
 
         printArmies(playerArmies, computerArmies);
 
@@ -85,19 +85,34 @@ public class DiceLab {
 
     public static int initializeArmies(Random random) {
         // Generate random number between 5 to 10 
+
+        //int armies = (int)(Math.random() * (max - min + 1)) + min;
+        int armynum = random.nextInt(6) + 5;
+        return armynum;
+    }
+    
+    public static int initializeArmies2(Random random) {
+        // Generate random number between 5 to 10 
         int min = 5;
         int max = 10;
         //int armies = (int)(Math.random() * (max - min + 1)) + min;
         int armynum = min + random.nextInt(max - min + 1);
         return armynum;
-
     }
 
     public static int rollDie (Random random) {
-        // Generate random number between 5 to 10 
+        // Generate random number between 1 to 6 
+        //int dicenum = (int)(Math.random() * (max - min + 1)) + min;
+        int dicenum = random.nextInt(7) + 1;
+        return dicenum;
+
+    }
+
+    public static int rollDie2 (Random random) {
+        // Generate random number between 1 to 6 
         int min = 1;
         int max = 6;
-        //int armies = (int)(Math.random() * (max - min + 1)) + min;
+        //int dicenum = (int)(Math.random() * (max - min + 1)) + min;
         int dicenum = min + random.nextInt(max - min + 1);
         return dicenum;
 
