@@ -16,9 +16,9 @@ public class MoreDiceLabSolution {
         // Uncomment the following lines once you finish Part 1
         // Remember to makes changes to the public static int initializeArmies
         
-        System.out.println("Enter minium number of Armies and Press ENTER.");
+        System.out.println("Enter minimum number of Armies and Press ENTER.");
         int minArmies = console.nextInt();
-        System.out.println("Enter maxium number of Armies and Press ENTER.");
+        System.out.println("Enter maximum number of Armies and Press ENTER.");
         int maxArmies = console.nextInt();
         
         // Also modify single parameter calls to initializeArmies with multiple parameters
@@ -142,14 +142,29 @@ public class MoreDiceLabSolution {
     // Part 1: add more Armies 1
     public static int initializeArmies(Random random, int min, int max) {
         // Generate random number between 5 to 10 
+        //int armies = (int)(Math.random() * (max - min + 1)) + min;
+        int armynum = random.nextInt(min + 1) + (max - min);
+        return armynum;
+    }
+    /*
+    public static int initializeArmies(Random random, int min, int max) {
+        // Generate random number between 5 to 10 
         //int min = 5;
         //int max = 10;
         //int armies = (int)(Math.random() * (max - min + 1)) + min;
         int armynum = min + random.nextInt(max - min + 1);
         return armynum;
+    }
+    */
 
+    public static int rollDie (Random random) {
+        // Generate random number between 1 to 6 
+        //int dicenum = (int)(Math.random() * (max - min + 1)) + min;
+        int dicenum = random.nextInt(2) + 5;
+        return dicenum;
     }
 
+    /*
     public static int rollDie (Random random) {
         // Generate random number between 5 to 10 
         int min = 1;
@@ -157,6 +172,6 @@ public class MoreDiceLabSolution {
         //int armies = (int)(Math.random() * (max - min + 1)) + min;
         int dicenum = min + random.nextInt(max - min + 1);
         return dicenum;
-
     }
+    */
 }
